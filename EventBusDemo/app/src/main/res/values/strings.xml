@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EventBusDemo</string>
+    <string name="add_item">Add item</string>
 </resources>
