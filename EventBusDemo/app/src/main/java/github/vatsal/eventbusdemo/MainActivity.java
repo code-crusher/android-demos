@@ -1,5 +1,6 @@
 package github.vatsal.eventbusdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
+import github.vatsal.eventbusdemo.activities.AddActivity;
 import github.vatsal.eventbusdemo.adapters.recycleradapters.FeedRecyclerAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,5 +47,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addItem(View view) {
+        startActivity(new Intent(this, AddActivity.class));
     }
 }

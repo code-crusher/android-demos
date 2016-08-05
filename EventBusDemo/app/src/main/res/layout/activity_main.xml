@@ -26,10 +26,10 @@
         <ImageButton
             android:id="@+id/but_add"
             android:layout_width="wrap_content"
-            android:onClick="addItem"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_add_circle"
-            android:contentDescription="@string/add_item" />
+            android:contentDescription="@string/add_item"
+            android:onClick="addItem" />
 
     </LinearLayout>
 
