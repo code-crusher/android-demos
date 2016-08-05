@@ -8,10 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
 
 import github.vatsal.eventbusdemo.activities.AddActivity;
 import github.vatsal.eventbusdemo.adapters.recycleradapters.FeedRecyclerAdapter;
+import github.vatsal.eventbusdemo.models.AdapterEvent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rvFeed;
 
     ArrayList<String> itemList = new ArrayList<>();
+
+    @Subscribe
+    public void OnAdapterEvent(AdapterEvent event) {
+        itemList.add(event.name);
+        recyclerAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +58,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void addItem(View view) {
         startActivity(new Intent(this, AddActivity.class));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

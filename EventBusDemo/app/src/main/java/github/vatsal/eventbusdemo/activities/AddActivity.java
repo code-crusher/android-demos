@@ -1,7 +1,7 @@
 package github.vatsal.eventbusdemo.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
@@ -15,7 +15,7 @@ import github.vatsal.eventbusdemo.models.AdapterEvent;
  * --05/08/16 at
  * --4:10 PM
  */
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +24,6 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void addNewItem(View view) {
-        EventBus.getDefault().post(new AdapterEvent("Name"));
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (!EventBus.getDefault().isRegistered(this))
-            EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().post(new AdapterEvent("New item"));
     }
 }
