@@ -41,7 +41,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         final String model = itemList.get(position);
         if (model != null) {
             try {
-                feedViewHolder.tvName.setText("Item" + position);
+                feedViewHolder.tvName.setText("Added " + model + " at " + position + " position");
                 feedViewHolder.tvName.setTag(feedViewHolder);
             } catch (Exception e) {
                 e.printStackTrace();
